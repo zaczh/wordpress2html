@@ -2,6 +2,8 @@
 # coding=utf-8
 import os
 import codecs
+import cgi
+
 try:
     import xml.etree.cElementTree as ET
 except ImportError:
@@ -47,8 +49,8 @@ for tag_item in tag_channel.iter():
             indx_string = indx_tmpl_f.read()
             indx_tmpl_f.close()
             
-            post_content = post_content.replace("\n","<br />")
-            post_content = post_content.replace("'","\'")         #escape special characters
+            post_content = post_content.replace("\n", "<br />")   
+            post_content = post_content.replace(" ", "&nbsp;")    #escape special characters, if any
             post_string = post_string.replace("<![CDATA[TITLE]]>", post_title)
             post_string = post_string.replace("<![CDATA[PREVIOUS_LINK]]>", post_previous_link)
             post_string = post_string.replace("<![CDATA[PREVIOUS_NAME]]>", post_previous_name)
